@@ -6,9 +6,7 @@ class Person {
   String trait1, trait2;  //Bonus traits that each team can have up to 2 of
   
   float strength, speed, agility, endurance;  //The stats of each player. endurance represents how many hits each person can take
-  float radius, throwRange;
-  
-  ///////////
+  float radius, throwRange, maxVel;
   
   
   //constructor
@@ -19,18 +17,19 @@ class Person {
     this.agility = ag + int(random(-1,1));
     this.endurance = (en + int(random(-1,1))) * 10;
 
-//////////////////////
-
     this.radius = 35 + ((this.endurance + this.strength) * 0.3);  //Slight variance in the size of each person depending on their strength and endurance
     this.throwRange = 90 + (this.radius*2) + (10*strength);  //Calculate the throw range of each team member
       
-    this.pos = new PVector(100,100);
-      
+    this.pos = new PVector(150,250);
+    this.maxVel = 7;
+    this.vel = new PVector(0,0);
+    
     
     //If they are on the RED team, they get coloured in as red, otherwise they are on the GREEN team
     if( t.equals("RED")) {
       team = "RED";
       clr = color(255,0,0);
+      this.pos = new PVector(500,500);
     }
     else {
       team = "GREEN";
@@ -53,20 +52,41 @@ class Person {
   
   //Update the position of the person each frame
   void updatePos() {
+    float angle = 0;
+    for( Person p : people ) {
+      
+      if( this.pos != p.pos ) {
+        float distance = calculateDist(this.pos, p.pos);
+        if( distance >= this.throwRange/2.5 ) {
+
+          angle = checkAngle(this.pos, p.pos);
+          this.vel.x = this.maxVel * cos(angle);
+          this.vel.y = this.maxVel * sin(angle);
+        
+        }
+      else
+      this.vel = new PVector(0,0);
+      }
+      
+    }
+
+    
+    
     this.pos.add(this.vel);
+    println(this.vel);
   }
   
   
   //Throw a ball at anyone who is in their throw radius
   void throwBall() {
-    for( Person p : people ) {
-      if( this.team.equals("GREEN") ) {
-        if( p.team.equals("RED") && calculateDist(this.pos, p.pos) <= this.throwRange ) {
+    //for( Person p : people ) {
+    //  if( this.team.equals("GREEN") ) {
+    //    if( p.team.equals("RED") && calculateDist(this.pos, p.pos) <= this.throwRange ) {
           
-        }
-      }
+    //    }
+    //  }
       
-    }
+    //}
   }
   
   
