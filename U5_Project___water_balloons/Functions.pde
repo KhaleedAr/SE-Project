@@ -10,10 +10,10 @@ float calculateDist( PVector p, PVector victim ) {
 
 float checkAngle(PVector p, PVector victim) {
   
+
   float distance = calculateDist(p, victim);
   float xDist = victim.x - p.x;
   float angle = degrees(acos(xDist/distance));
-  println(angle);
   return angle;
   
 }

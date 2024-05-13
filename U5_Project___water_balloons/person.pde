@@ -7,6 +7,7 @@ class Person {
   
   float strength, speed, agility, endurance;  //The stats of each player. endurance represents how many hits each person can take
   float radius, throwRange, maxVel;
+
   
   
   //constructor
@@ -78,6 +79,7 @@ class Person {
   
   
   //Throw a ball at anyone who is in their throw radius
+
   void throwBall() {
     //for( Person p : people ) {
     //  if( this.team.equals("GREEN") ) {
@@ -88,6 +90,7 @@ class Person {
       
     //}
   }
+
   
   
   
