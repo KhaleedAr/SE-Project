@@ -13,5 +13,5 @@ float checkAngle(PVector p, PVector victim) {
   float distance = calculateDist(p, victim);
   float xDist = victim.x - p.x;
   
-  
+  ////////////////
 }

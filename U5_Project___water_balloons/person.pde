@@ -8,6 +8,7 @@ class Person {
   float strength, speed, agility, endurance;  //The stats of each player. endurance represents how many hits each person can take
   float radius, throwRange;
   
+  ///////////
   
   
   //constructor
