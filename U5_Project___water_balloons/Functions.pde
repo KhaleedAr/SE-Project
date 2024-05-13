@@ -8,10 +8,9 @@ float calculateDist( PVector p, PVector victim ) {
 }
 
 
-float checkAngle(PVector p, PVector victim) {
+//float checkAngle(PVector p, PVector victim) {
   
-  float distance = calculateDist(p, victim);
-  float xDist = victim.x - p.x;
+//  float distance = calculateDist(p, victim);
+//  float xDist = victim.x - p.x;
   
-  ////////////////
-}
+//}
