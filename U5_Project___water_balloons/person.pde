@@ -19,6 +19,8 @@ class Person {
     this.agility = ag + int(random(-1,1));
     this.endurance = (en + int(random(-1,1))) * 10;
 
+//////////////////////
+
     this.radius = 35 + ((this.endurance + this.strength) * 0.3);  //Slight variance in the size of each person depending on their strength and endurance
     this.throwRange = 90 + (this.radius*2) + (10*strength);  //Calculate the throw range of each team member
       
