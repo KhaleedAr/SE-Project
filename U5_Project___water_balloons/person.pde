@@ -56,12 +56,12 @@ class Person {
     float angle = 0;
     for( Person p : people ) {
       
-      if( this.pos != p.pos ) {
+      if( this.pos != p.pos ) {  //so it doesnt count itself
         float distance = calculateDist(this.pos, p.pos);
-        if( distance >= this.throwRange/2.5 ) {
+        if( distance >= this.throwRange/2.5 ) {  //so then they stop. Try removing this and they freak out when they get too close
 
           angle = checkAngle(this.pos, p.pos);
-          this.vel.x = this.maxVel * cos(angle);
+          this.vel.x = this.maxVel * cos(angle);  //Using a right angle triangle and a speed that I want them to move at (the maxVel)
           this.vel.y = this.maxVel * sin(angle);
         
         }
