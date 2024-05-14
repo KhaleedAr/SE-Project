@@ -42,8 +42,7 @@ void draw() {
   
   p.drawMe();
   q.drawMe();
-  q.updatePos();  //try switching between p and q to see the issue
-  //p.updatePos();
+  q.updatePos();
   
   
   
