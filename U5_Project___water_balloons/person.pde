@@ -53,20 +53,14 @@ class Person {
   
   //Update the position of the person each frame
   void updatePos() {
-    float angle = 0;
     for( Person p : people ) {
       
       if( this.pos != p.pos ) {
-        float distance = calculateDist(this.pos, p.pos);
-        if( distance >= this.throwRange/2.5 ) {
-
-          angle = checkAngle(this.pos, p.pos);
-          this.vel.x = this.maxVel * cos(angle);
-          this.vel.y = this.maxVel * sin(angle);
-        
-        }
-      else
-      this.vel = new PVector(0,0);
+        float angle;
+        PVector displacement = PVector.sub( p.pos, this.pos );
+        angle = displacement.heading();
+        PVector direction = new PVector( cos(angle), sin(angle) );
+        this.vel = direction.mult(this.maxVel);
       }
       
     }
