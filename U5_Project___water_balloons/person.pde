@@ -30,7 +30,7 @@ class Person {
     if( t.equals("RED")) {
       team = "RED";
       clr = color(255,0,0);
-      this.pos = new PVector(500,500);
+      this.pos = new PVector(random(500,600),random(300,400));
     }
     else {
       team = "GREEN";
@@ -53,9 +53,28 @@ class Person {
   
   //Update the position of the person each frame
   void updatePos() {
+    int i = 0;
+    int minimum;
+    int[] distList;
+    int[] teamSize = checkTeamSize();
     for( Person p : people ) {
+        
+      if(this.team.equals("RED"))
+        distList = new int[people.size()-teamSize[0]];
+      else
+        distList = new int[people.size()-teamSize[1]];
       
-      if( this.pos != p.pos ) {
+      
+      
+      
+      if( this.team != p.team ) {  //So it doesnt go to itself
+        
+        float distance = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
+        distList[i] = int(distance);
+        minimum = min(distList);
+        i++;
+        
+        
         float angle;
         PVector displacement = PVector.sub( p.pos, this.pos );
         angle = displacement.heading();

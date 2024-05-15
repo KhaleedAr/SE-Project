@@ -17,3 +17,18 @@ float checkAngle(PVector p, PVector victim) {
   return angle;
   
 }
+
+
+int[] checkTeamSize() {
+  int[] teams = new int[2];
+  
+  for(Person p : people) {
+    if(p.team.equals("RED"))
+      teams[0] += 1;
+    if(p.team.equals("GREEN"))
+      teams[1] += 1;
+  }
+  println(teams[0], teams[1]);
+  
+  return teams;
+}
