@@ -32,3 +32,8 @@ int[] checkTeamSize() {
   
   return teams;
 }
+
+int countBalls() {
+  int numBalls = balls.size();
+  return numBalls;
+}

@@ -1,5 +1,7 @@
 int numRed, numGreen;
 ArrayList<Person> people = new ArrayList<Person>();
+ArrayList<balloon> balls = new ArrayList<balloon>();
+int ballCount = balls.size();
 
 Person p = new Person(10,10,10,10, "RED");
 Person q = new Person(10,10,10,10, "GREEN");
@@ -9,7 +11,7 @@ Person p2 = new Person(10,10,10,10, "RED");
 
 
 Person p1 = new Person(10,10,10,10,"RED");
-balloon b1 = new balloon(p);
+balloon b1 = new balloon(p,q);
 
 
 
@@ -29,22 +31,21 @@ b1.draw();
 
 
 
-frameRate(10);
+frameRate(60);
 }
 
 
 void draw() {
   background(230);
   
-  b1.draw();
-  b1.updatePos();
+
   
   
   p.drawMe();
   q.drawMe();
-  p1.drawMe();
   q.updatePos();
-  
+  b1.draw();
+  b1.updatePos();
   
   
 }

@@ -22,7 +22,7 @@ class Person {
     this.throwRange = 90 + (this.radius*2) + (10*strength);  //Calculate the throw range of each team member
       
     this.pos = new PVector(150,250);
-    this.maxVel = 7;
+    this.maxVel = 1;
     this.vel = new PVector(0,0);
     
     
@@ -94,19 +94,18 @@ class Person {
   //Throw a ball at anyone who is in their throw radius
 
   void throwBall() {
-    //for( Person p : people ) {
-    //  if( this.team.equals("GREEN") ) {
-    //    if( p.team.equals("RED") && calculateDist(this.pos, p.pos) <= this.throwRange ) {
-          
-    //    }
-    //  }
-      
-    //}
+    for( Person p : people ) {
+      if( this.team != p.team && this.throwRange <= dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y) ) {
+        balls.add(new balloon(this, p));
+      }
+    }
   }
 
   
   
   
 }
+
+
 
 //maybe we could make the peopel have a certain number of shots before they have to go back and refill their balloons
