@@ -28,6 +28,11 @@ class balloon{
     this.dest = e.pos;
     this.maxVel = p.strength;
     
+    this.pos = p.pos;
+    this.clr = p.clr;
+    this.dest = e.pos;
+    this.maxVel = p.strength;
+    
 >>>>>>> 4a74a81c912df0a8888a04849d7b13073ce75c3b
     }
 
