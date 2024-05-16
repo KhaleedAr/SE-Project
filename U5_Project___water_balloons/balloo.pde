@@ -1,13 +1,8 @@
 class balloon{
   //Fields
-<<<<<<< HEAD
   PVector pos = new PVector(400,400);
   PVector dest;
-=======
-  PVector pos = p1.pos;
->>>>>>> 4a74a81c912df0a8888a04849d7b13073ce75c3b
   PVector vel;
-  PVector dest;
   int rad = 30;
   boolean ice = false;
   color clr;
@@ -18,22 +13,15 @@ class balloon{
   //Constructor
   balloon(Person p, Person e){
     this.team = p.team;
-<<<<<<< HEAD
     this.vel = new PVector(p.strength,2);
     this.clr = p.clr;
     //this.dest = p.enemy;
-=======
+
     this.pos = p.pos;
     this.clr = p.clr;
     this.dest = e.pos;
     this.maxVel = p.strength;
-    
-    this.pos = p.pos;
-    this.clr = p.clr;
-    this.dest = e.pos;
-    this.maxVel = p.strength;
-    
->>>>>>> 4a74a81c912df0a8888a04849d7b13073ce75c3b
+
     }
 
   

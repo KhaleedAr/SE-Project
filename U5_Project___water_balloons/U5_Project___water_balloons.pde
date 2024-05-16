@@ -43,6 +43,7 @@ void draw() {
   
   p.drawMe();
   q.drawMe();
+  p1.drawMe();
   q.updatePos();
   b1.draw();
   b1.updatePos();
