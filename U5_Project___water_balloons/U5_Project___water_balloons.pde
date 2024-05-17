@@ -3,6 +3,9 @@ ArrayList<Person> people = new ArrayList<Person>();
 ArrayList<balloon> balls = new ArrayList<balloon>();
 int ballCount = balls.size();
 
+
+int frameRate = 60;
+
 Person p = new Person(10,10,10,10, "RED");
 Person q = new Person(10,10,10,10, "GREEN");
 Person p2 = new Person(10,10,10,10, "RED");
@@ -32,7 +35,7 @@ b1.drawMe();
 
 
 
-frameRate(60);
+frameRate(frameRate);
 }
 
 

@@ -6,7 +6,7 @@ class Person {
   String trait1, trait2;  //Bonus traits that each team can have up to 2 of
   
   float strength, speed, agility, endurance;  //The stats of each player. endurance represents how many hits each person can take
-  float radius, throwRange, maxVel;
+  float radius, throwRange, maxVel, throwCooldown;
 
   
   
@@ -20,9 +20,10 @@ class Person {
 
     this.radius = 35 + ((this.endurance + this.strength) * 0.3);  //Slight variance in the size of each person depending on their strength and endurance
     this.throwRange = 90 + (this.radius*2) + (10*strength);  //Calculate the throw range of each team member
+    this.throwCooldown = 3 * frameRate;
       
     this.pos = new PVector(150,250);
-    this.maxVel = 1;
+    this.maxVel = 0.15 * this.speed;
     this.vel = new PVector(0,0);
     
     
@@ -99,9 +100,15 @@ class Person {
   //Throw a ball at anyone who is in their throw radius
 
   void throwBall() {
+    throwCooldown -= 1;
     for( Person p : people ) {
-      if( this.team != p.team && this.throwRange <= dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y) ) {
-        balls.add(new balloon(this, p));
+      
+      if( this.team != p.team && this.throwRange/2 >= dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y) ) {
+        if( this.throwCooldown <=0) {
+          balls.add(new balloon(this, p));
+          this.throwCooldown = 3 * frameRate;
+        }
+
       }
     }
   }

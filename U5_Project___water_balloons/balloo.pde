@@ -44,7 +44,7 @@ class balloon{
   
   void ballThrow(){
     float angle;
-    PVector displacement = PVector.sub( q.pos, this.pos );
+    PVector displacement = PVector.sub( this.dest, this.pos );
     angle = displacement.heading();
     PVector direction = new PVector( cos(angle), sin(angle) );
     this.vel = direction.mult(this.maxVel);
