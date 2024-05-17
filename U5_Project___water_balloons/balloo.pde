@@ -2,9 +2,6 @@ class balloon{
   //Fields
   PVector pos = new PVector(400,400);
   PVector dest;
-=======
-  PVector dest;
-  PVector pos;;
   PVector vel;
   int rad = 30;
   boolean ice = false;
