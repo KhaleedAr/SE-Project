@@ -22,6 +22,7 @@ background(240);
 people.add(p);
 people.add(q);
 people.add(p2);
+balls.add(b1);
 
 p.drawMe();
 q.drawMe();
@@ -38,16 +39,19 @@ frameRate(60);
 void draw() {
   background(230);
   
-
+  
+  for( Person p : people ) {
+    p.drawMe();
+    p.updatePos();
+    p.throwBall();
+  }
   
   
-  p.drawMe();
-  q.drawMe();
-  p1.drawMe();
-  q.updatePos();
-  b1.updatePos();
-  b1.drawMe();
-  b1.ballThrow();
 
+  for( balloon b : balls ) {
+    b.drawMe();
+    b.ballThrow();
+    b.updatePos();
+  }
   
 }

@@ -15,22 +15,14 @@ class balloon{
     this.team = p.team;
     this.vel = new PVector(p.strength,2);
     this.clr = p.clr;
-    //this.dest = p.enemy;
 
-    this.pos = p.pos;
+
+    this.pos = new PVector(p.pos.x, p.pos.y);
+    //this.pos = p.pos;
     this.vel = new PVector(p.strength*.2,2);
     this.clr = p.clr;
     
-    this.dest = e.pos;
-    this.maxVel = p.strength;
-
-    //this.pos = p.pos;
-    this.clr = p.clr;
-    this.maxVel = 1;
-    
-    this.pos = p.pos;
-    this.clr = p.clr;
-    this.dest = e.pos;
+    this.dest = new PVector(e.pos.x, e.pos.y);
     this.maxVel = p.strength;
     
     }

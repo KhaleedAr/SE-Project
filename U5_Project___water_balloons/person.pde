@@ -80,7 +80,12 @@ class Person {
         angle = displacement.heading();
         PVector direction = new PVector( cos(angle), sin(angle) );
         this.vel = direction.mult(this.maxVel);
+        if( distance <= throwRange/3 ) {
+          this.maxVel = 0;
+        }
       }
+      
+      
       
     }
 
