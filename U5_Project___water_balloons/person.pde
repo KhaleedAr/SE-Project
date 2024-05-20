@@ -93,7 +93,6 @@ class Person {
     
     
     this.pos.add(this.vel);
-    println(this.vel);
   }
   
   

@@ -1,7 +1,11 @@
+import g4p_controls.*;
+
 int numRed, numGreen;
 ArrayList<Person> people = new ArrayList<Person>();
 ArrayList<balloon> balls = new ArrayList<balloon>();
 int ballCount = balls.size();
+
+int st1, st2, sp1, sp2, ed1, ed2, ag1, ag2;
 
 
 int frameRate = 60;
@@ -21,6 +25,7 @@ balloon b1 = new balloon(p,q);
 void setup(){
 size(1000,800);
 background(240);
+createGUI();
 
 people.add(p);
 people.add(q);

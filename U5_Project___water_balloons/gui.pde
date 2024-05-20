@@ -18,21 +18,21 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
   appc.background(230);
 } //_CODE_:window1:259097:
 
-public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:strength:485376:
-  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:strength:485376:
+public void GreenStrength(GCustomSlider source, GEvent event) { //_CODE_:strengthT1:485376:
+  st1 = strengthT1.getValueI();
+} //_CODE_:strengthT1:485376:
 
-public void custom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:speed:799414:
-  println("custom_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:speed:799414:
+public void GreenSpeed(GCustomSlider source, GEvent event) { //_CODE_:speedT1:799414:
+  sp1 = speedT1.getValueI();
+} //_CODE_:speedT1:799414:
 
-public void custom_slider3_change1(GCustomSlider source, GEvent event) { //_CODE_:agility:409325:
-  println("custom_slider3 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:agility:409325:
+public void GreenAgility(GCustomSlider source, GEvent event) { //_CODE_:agilityT1:409325:
+  ag1 = agilityT1.getValueI();
+} //_CODE_:agilityT1:409325:
 
-public void custom_slider4_change1(GCustomSlider source, GEvent event) { //_CODE_:endurance:685171:
-  println("endurance - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:endurance:685171:
+public void GreenEndurance(GCustomSlider source, GEvent event) { //_CODE_:enduranceT1:685171:
+  ed1 = enduranceT1.getValueI();
+} //_CODE_:enduranceT1:685171:
 
 
 
@@ -43,7 +43,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 300, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 600, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
@@ -52,46 +52,54 @@ public void createGUI(){
   label1.setText("GREEN TEAM");
   label1.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   label1.setOpaque(false);
-  strength = new GCustomSlider(window1, 17, 75, 100, 40, "grey_blue");
-  strength.setShowValue(true);
-  strength.setLimits(1, 1, 10);
-  strength.setStickToTicks(true);
-  strength.setShowTicks(true);
-  strength.setNumberFormat(G4P.INTEGER, 0);
-  strength.setOpaque(false);
-  strength.addEventHandler(this, "custom_slider1_change1");
-  speed = new GCustomSlider(window1, 17, 138, 100, 40, "grey_blue");
-  speed.setShowValue(true);
-  speed.setLimits(1, 1, 10);
-  speed.setStickToTicks(true);
-  speed.setShowTicks(true);
-  speed.setNumberFormat(G4P.INTEGER, 0);
-  speed.setOpaque(false);
-  speed.addEventHandler(this, "custom_slider2_change1");
-  agility = new GCustomSlider(window1, 14, 192, 100, 40, "grey_blue");
-  agility.setShowValue(true);
-  agility.setLimits(1, 1, 10);
-  agility.setStickToTicks(true);
-  agility.setShowTicks(true);
-  agility.setNumberFormat(G4P.INTEGER, 0);
-  agility.setOpaque(false);
-  agility.addEventHandler(this, "custom_slider3_change1");
-  endurance = new GCustomSlider(window1, 15, 230, 100, 40, "grey_blue");
-  endurance.setShowValue(true);
-  endurance.setLimits(1, 1, 10);
-  endurance.setStickToTicks(true);
-  endurance.setShowTicks(true);
-  endurance.setNumberFormat(G4P.INTEGER, 0);
-  endurance.setOpaque(false);
-  endurance.addEventHandler(this, "custom_slider4_change1");
-  label2 = new GLabel(window1, 27, 55, 80, 20);
-  label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label2.setText("My label");
-  label2.setOpaque(false);
-  label3 = new GLabel(window1, 27, 115, 80, 20);
+  strengthT1 = new GCustomSlider(window1, 17, 55, 100, 56, "grey_blue");
+  strengthT1.setShowValue(true);
+  strengthT1.setLimits(1, 1, 10);
+  strengthT1.setStickToTicks(true);
+  strengthT1.setShowTicks(true);
+  strengthT1.setNumberFormat(G4P.INTEGER, 0);
+  strengthT1.setOpaque(false);
+  strengthT1.addEventHandler(this, "GreenStrength");
+  speedT1 = new GCustomSlider(window1, 15, 132, 100, 56, "grey_blue");
+  speedT1.setShowValue(true);
+  speedT1.setLimits(1, 1, 10);
+  speedT1.setStickToTicks(true);
+  speedT1.setShowTicks(true);
+  speedT1.setNumberFormat(G4P.INTEGER, 0);
+  speedT1.setOpaque(false);
+  speedT1.addEventHandler(this, "GreenSpeed");
+  agilityT1 = new GCustomSlider(window1, 13, 210, 100, 56, "grey_blue");
+  agilityT1.setShowValue(true);
+  agilityT1.setLimits(1, 1, 10);
+  agilityT1.setStickToTicks(true);
+  agilityT1.setShowTicks(true);
+  agilityT1.setNumberFormat(G4P.INTEGER, 0);
+  agilityT1.setOpaque(false);
+  agilityT1.addEventHandler(this, "GreenAgility");
+  enduranceT1 = new GCustomSlider(window1, 12, 293, 100, 56, "grey_blue");
+  enduranceT1.setShowValue(true);
+  enduranceT1.setLimits(1, 1, 10);
+  enduranceT1.setStickToTicks(true);
+  enduranceT1.setShowTicks(true);
+  enduranceT1.setNumberFormat(G4P.INTEGER, 0);
+  enduranceT1.setOpaque(false);
+  enduranceT1.addEventHandler(this, "GreenEndurance");
+  label3 = new GLabel(window1, 27, 117, 76, 13);
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label3.setText("My label");
+  label3.setText("Speed");
   label3.setOpaque(false);
+  label4 = new GLabel(window1, 22, 188, 80, 20);
+  label4.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label4.setText("Agility");
+  label4.setOpaque(false);
+  label5 = new GLabel(window1, 21, 269, 80, 20);
+  label5.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label5.setText("Endurance");
+  label5.setOpaque(false);
+  label2 = new GLabel(window1, 27, 40, 80, 14);
+  label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label2.setText("Strength");
+  label2.setOpaque(false);
   window1.loop();
 }
 
@@ -99,9 +107,11 @@ public void createGUI(){
 // autogenerated do not edit
 GWindow window1;
 GLabel label1; 
-GCustomSlider strength; 
-GCustomSlider speed; 
-GCustomSlider agility; 
-GCustomSlider endurance; 
-GLabel label2; 
+GCustomSlider strengthT1; 
+GCustomSlider speedT1; 
+GCustomSlider agilityT1; 
+GCustomSlider enduranceT1; 
 GLabel label3; 
+GLabel label4; 
+GLabel label5; 
+GLabel label2; 

@@ -28,7 +28,6 @@ int[] checkTeamSize() {
     if(p.team.equals("GREEN"))
       teams[1] += 1;
   }
-  println(teams[0], teams[1]);
   
   return teams;
 }
