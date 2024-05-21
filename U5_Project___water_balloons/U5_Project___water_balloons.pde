@@ -42,7 +42,7 @@ void draw() {
   if(start)
     println(people.size());
   
-
+  //Create balloons
   for( balloon b : balls ) {
     b.drawMe();
     b.checkCol();
