@@ -23,7 +23,9 @@ class Person {
     this.throwCooldown = 3 * frameRate;
       
     this.pos = new PVector(150,250);
-    this.maxVel = 0.15 * this.speed;
+    this.maxVel = 0.2 * this.speed;
+    if(this.maxVel == 0)
+      this.maxVel = 0.2;
     this.vel = new PVector(0,0);
     
     

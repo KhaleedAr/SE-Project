@@ -58,6 +58,21 @@ public void RedTeamSize(GCustomSlider source, GEvent event) { //_CODE_:teamSize2
   teamSizeRed = teamSize2.getValueI();
 } //_CODE_:teamSize2:247080:
 
+public void start_Stop(GButton source, GEvent event) { //_CODE_:startStop:598543:
+  if( !start ) {
+    start = true;
+    people = new ArrayList<Person>();
+    balls = new ArrayList<balloon>();
+    createTeams();
+    
+  }
+  else if( start ) {
+    start = false;
+    people = new ArrayList<Person>();
+    balls = new ArrayList<balloon>();
+  }
+} //_CODE_:startStop:598543:
+
 
 
 // Create all the GUI controls. 
@@ -197,6 +212,9 @@ public void createGUI(){
   teamSize2.setNumberFormat(G4P.INTEGER, 0);
   teamSize2.setOpaque(false);
   teamSize2.addEventHandler(this, "RedTeamSize");
+  startStop = new GButton(window1, 137, 12, 80, 30);
+  startStop.setText("Start/Stop");
+  startStop.addEventHandler(this, "start_Stop");
   window1.loop();
 }
 
@@ -225,3 +243,4 @@ GLabel label11;
 GCustomSlider teamSize1; 
 GLabel label12; 
 GCustomSlider teamSize2; 
+GButton startStop; 

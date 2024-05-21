@@ -56,3 +56,11 @@ void createGreen() {
     people.add(new Person(st2, sp2, ag2, ed2, "GREEN") );
   }
 }
+
+void startScreen() {
+  background(0);
+  fill(255);
+  textAlign(CENTER);
+  textSize(75);
+  text("Please press start to begin.", width/2, height/2);
+}
