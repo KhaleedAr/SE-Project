@@ -3,7 +3,8 @@ import g4p_controls.*;
 int numRed, numGreen;
 ArrayList<Person> people = new ArrayList<Person>();
 ArrayList<balloon> balls = new ArrayList<balloon>();
-int ballCount = balls.size();
+int ballCount = balls.size(), teamSizeRed, teamSizeGreen;
+boolean start = false;
 
 int st1, st2, sp1, sp2, ed1, ed2, ag1, ag2;
 
@@ -23,29 +24,27 @@ balloon b1 = new balloon(p,q);
 
 
 void setup(){
-size(1000,800);
-background(240);
-createGUI();
-
-people.add(p);
-people.add(q);
-people.add(p2);
-balls.add(b1);
-
-p.drawMe();
-q.drawMe();
-
-
-b1.drawMe();
-
-
-
-frameRate(frameRate);
+  size(1000,800);
+  background(240);
+  createGUI();
+  
+  
+  
+  
+  
+  frameRate(frameRate);
 }
 
 
 void draw() {
   background(230);
+  
+  if( !start ) {
+    createTeams();
+    println(teamSizeGreen);
+    start = true;
+  }
+  
   
   
   for( Person p : people ) {

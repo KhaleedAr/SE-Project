@@ -34,6 +34,30 @@ public void GreenEndurance(GCustomSlider source, GEvent event) { //_CODE_:endura
   ed1 = enduranceT1.getValueI();
 } //_CODE_:enduranceT1:685171:
 
+public void RedStrength(GCustomSlider source, GEvent event) { //_CODE_:strengthT2:482780:
+  st2 = strengthT2.getValueI();
+} //_CODE_:strengthT2:482780:
+
+public void RedSpeed(GCustomSlider source, GEvent event) { //_CODE_:speedT2:337312:
+  sp2 = speedT2.getValueI();
+} //_CODE_:speedT2:337312:
+
+public void RedAgility(GCustomSlider source, GEvent event) { //_CODE_:agilityT2:228075:
+  ag2 = agilityT2.getValueI();
+} //_CODE_:agilityT2:228075:
+
+public void RedEndurance(GCustomSlider source, GEvent event) { //_CODE_:enduranceT2:404878:
+  ed2 = enduranceT2.getValueI();
+} //_CODE_:enduranceT2:404878:
+
+public void GreenTeamSize(GCustomSlider source, GEvent event) { //_CODE_:teamSize1:294389:
+  teamSizeGreen = teamSize1.getValueI();
+} //_CODE_:teamSize1:294389:
+
+public void RedTeamSize(GCustomSlider source, GEvent event) { //_CODE_:teamSize2:247080:
+  teamSizeRed = teamSize2.getValueI();
+} //_CODE_:teamSize2:247080:
+
 
 
 // Create all the GUI controls. 
@@ -100,6 +124,79 @@ public void createGUI(){
   label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label2.setText("Strength");
   label2.setOpaque(false);
+  label6 = new GLabel(window1, 241, 117, 80, 20);
+  label6.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label6.setText("Speed");
+  label6.setOpaque(false);
+  label7 = new GLabel(window1, 241, 36, 80, 20);
+  label7.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label7.setText("Strength");
+  label7.setOpaque(false);
+  label8 = new GLabel(window1, 230, 10, 101, 20);
+  label8.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label8.setText("RED TEAM");
+  label8.setLocalColorScheme(GCScheme.RED_SCHEME);
+  label8.setOpaque(false);
+  label9 = new GLabel(window1, 241, 188, 80, 20);
+  label9.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label9.setText("Agility");
+  label9.setOpaque(false);
+  label10 = new GLabel(window1, 241, 269, 80, 20);
+  label10.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label10.setText("Endurance");
+  label10.setOpaque(false);
+  strengthT2 = new GCustomSlider(window1, 229, 55, 100, 56, "grey_blue");
+  strengthT2.setShowValue(true);
+  strengthT2.setShowLimits(true);
+  strengthT2.setLimits(1, 1, 10);
+  strengthT2.setNumberFormat(G4P.INTEGER, 0);
+  strengthT2.setOpaque(false);
+  strengthT2.addEventHandler(this, "RedStrength");
+  speedT2 = new GCustomSlider(window1, 229, 132, 100, 56, "grey_blue");
+  speedT2.setShowValue(true);
+  speedT2.setShowLimits(true);
+  speedT2.setLimits(1, 1, 10);
+  speedT2.setNumberFormat(G4P.INTEGER, 0);
+  speedT2.setOpaque(false);
+  speedT2.addEventHandler(this, "RedSpeed");
+  agilityT2 = new GCustomSlider(window1, 229, 210, 100, 56, "grey_blue");
+  agilityT2.setShowValue(true);
+  agilityT2.setShowLimits(true);
+  agilityT2.setLimits(1, 1, 10);
+  agilityT2.setNumberFormat(G4P.INTEGER, 0);
+  agilityT2.setOpaque(false);
+  agilityT2.addEventHandler(this, "RedAgility");
+  enduranceT2 = new GCustomSlider(window1, 229, 293, 100, 56, "grey_blue");
+  enduranceT2.setShowValue(true);
+  enduranceT2.setShowLimits(true);
+  enduranceT2.setLimits(1, 1, 10);
+  enduranceT2.setNumberFormat(G4P.INTEGER, 0);
+  enduranceT2.setOpaque(false);
+  enduranceT2.addEventHandler(this, "RedEndurance");
+  label11 = new GLabel(window1, 8, 369, 109, 20);
+  label11.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label11.setText("Green Team Size");
+  label11.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  label11.setOpaque(false);
+  teamSize1 = new GCustomSlider(window1, 12, 391, 100, 56, "grey_blue");
+  teamSize1.setShowValue(true);
+  teamSize1.setShowLimits(true);
+  teamSize1.setLimits(1, 1, 4);
+  teamSize1.setNumberFormat(G4P.INTEGER, 0);
+  teamSize1.setOpaque(false);
+  teamSize1.addEventHandler(this, "GreenTeamSize");
+  label12 = new GLabel(window1, 230, 368, 101, 20);
+  label12.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label12.setText("Red Team Size");
+  label12.setLocalColorScheme(GCScheme.RED_SCHEME);
+  label12.setOpaque(false);
+  teamSize2 = new GCustomSlider(window1, 229, 391, 100, 56, "grey_blue");
+  teamSize2.setShowValue(true);
+  teamSize2.setShowLimits(true);
+  teamSize2.setLimits(1, 1, 4);
+  teamSize2.setNumberFormat(G4P.INTEGER, 0);
+  teamSize2.setOpaque(false);
+  teamSize2.addEventHandler(this, "RedTeamSize");
   window1.loop();
 }
 
@@ -115,3 +212,16 @@ GLabel label3;
 GLabel label4; 
 GLabel label5; 
 GLabel label2; 
+GLabel label6; 
+GLabel label7; 
+GLabel label8; 
+GLabel label9; 
+GLabel label10; 
+GCustomSlider strengthT2; 
+GCustomSlider speedT2; 
+GCustomSlider agilityT2; 
+GCustomSlider enduranceT2; 
+GLabel label11; 
+GCustomSlider teamSize1; 
+GLabel label12; 
+GCustomSlider teamSize2; 
