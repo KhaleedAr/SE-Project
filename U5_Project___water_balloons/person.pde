@@ -4,9 +4,10 @@ class Person {
   String team;  //Which teach the Person is on
   color clr;  //Their colour
   String trait1, trait2;  //Bonus traits that each team can have up to 2 of
+  boolean movingAway;
   
   float strength, speed, agility, endurance;  //The stats of each player. endurance represents how many hits each person can take
-  float radius, throwRange, maxVel, throwCooldown;
+  float radius, throwRange, maxVel, throwCooldown, moveAway;
 
   
   
@@ -21,6 +22,8 @@ class Person {
     this.radius = 35 + ((this.endurance + this.strength) * 0.3);  //Slight variance in the size of each person depending on their strength and endurance
     this.throwRange = 90 + (this.radius*2) + (10*strength);  //Calculate the throw range of each team member
     this.throwCooldown = 3 * frameRate;
+    this.moveAway = 0;
+    this.movingAway = false;
       
     this.pos = new PVector(150,250);
     this.maxVel = 0.2 * this.speed;
@@ -80,11 +83,26 @@ class Person {
         
         float angle;
         PVector displacement = PVector.sub( p.pos, this.pos );
+        PVector direction;
         angle = displacement.heading();
-        PVector direction = new PVector( cos(angle), sin(angle) );
+        if( moveAway > 0  ) {
+          if( moveAway == 2.5 * frameRate ) {
+            angle += random(-50,50);
+          }
+          direction = new PVector( cos(-angle), sin(-angle) );
+          this.moveAway--;
+        }
+        else {
+          direction = new PVector( cos(angle), sin(angle) );
+          movingAway = false;
+        }
+        
         this.vel = direction.mult(this.maxVel);
         if( distance <= throwRange/3 ) {
-          this.maxVel = 0;
+          if( !movingAway ) {
+          this.moveAway = 2.5*frameRate;
+          movingAway = true;
+          }
         }
       }
       
@@ -93,7 +111,7 @@ class Person {
     }
 
     
-    
+    println(this.moveAway);
     this.pos.add(this.vel);
   }
   

@@ -50,7 +50,6 @@ class balloon{
     angle = displacement.heading();
     PVector direction = new PVector( cos(angle), sin(angle) );
     this.vel = direction.mult(this.maxVel);
-    println(this.vel);
     
     
   }

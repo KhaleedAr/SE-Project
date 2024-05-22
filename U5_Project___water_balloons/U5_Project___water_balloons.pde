@@ -39,9 +39,6 @@ void draw() {
     p.throwBall();
   }
   
-  if(start)
-    println(people.size());
-  
   //Create balloons
   for( balloon b : balls ) {
     b.drawMe();
