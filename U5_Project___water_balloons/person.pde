@@ -21,13 +21,13 @@ class Person {
 
     this.radius = 35 + ((this.endurance + this.strength) * 0.3);  //Slight variance in the size of each person depending on their strength and endurance
     this.throwRange = 90 + (this.radius*2) + (10*strength);  //Calculate the throw range of each team member
-    this.throwCooldown = 3 * frameRate;
-    this.moveAway = 0;
-    this.movingAway = false;
+    this.throwCooldown = 3 * frameRate;  //a cooldown of 3 seconds in between each throw
+    this.moveAway = 0;  //A timer used for when a person should be moving away from the enemy
+    this.movingAway = false;  //true/false to say if they are moving away
       
     this.pos = new PVector(150,250);
-    this.maxVel = 0.2 * this.speed;
-    if(this.maxVel == 0)
+    this.maxVel = 0.2 * this.speed;  //Sets max velocity based on their speed stat
+    if(this.maxVel == 0)  //sets a minimum speed to prevent someone being unable to move
       this.maxVel = 0.2;
     this.vel = new PVector(0,0);
     
@@ -53,6 +53,7 @@ class Person {
     fill(clr);
     circle(this.pos.x, this.pos.y, this.radius);
     noFill();
+    stroke(100);
     strokeWeight(0.1);
     circle(this.pos.x, this.pos.y, this.throwRange);
   }
@@ -65,7 +66,7 @@ class Person {
     int[] teamSize = checkTeamSize();
     for( Person p : people ) {
         
-      if(this.team.equals("RED"))
+      if(this.team.equals("RED"))  //checks what team each person is on and checks the distance from each enemy
         distList = new int[people.size()-teamSize[0]];
       else
         distList = new int[people.size()-teamSize[1]];
@@ -73,32 +74,32 @@ class Person {
       
       
       
-      if( this.team != p.team ) {  //So it doesnt go to itself
+      if( this.team != p.team ) {  //so that they do not move towards themselves
         
-        float distance = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
-        distList[i] = int(distance);
-        minimum = min(distList);
+        float distance = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);  //calculates the distance between each enemy
+        distList[i] = int(distance);  //puts the distance into a list
+        minimum = min(distList);  //pulls the closest enemy and chooses them to go towards
         i++;
         
         
         float angle;
         PVector displacement = PVector.sub( p.pos, this.pos );
         PVector direction;
-        angle = displacement.heading();
-        if( moveAway > 0  ) {
-          if( moveAway == 2.5 * frameRate ) {
+        angle = displacement.heading();  //calculates the direction that the person needs to move in
+        if( moveAway > 0  ) {  //if greater than zero, they should be moving away
+          if( moveAway == 2.5 * frameRate ) {  //if they just begun moving away, it will select a random variance in how they move away
             angle += random(-50,50);
           }
-          direction = new PVector( cos(-angle), sin(-angle) );
-          this.moveAway--;
+          direction = new PVector( cos(-angle), sin(-angle) );  //The moving away formula
+          this.moveAway--;  //counts down how long they should move away for
         }
         else {
-          direction = new PVector( cos(angle), sin(angle) );
+          direction = new PVector( cos(angle), sin(angle) );  //The moving towards formula
           movingAway = false;
         }
         
-        this.vel = direction.mult(this.maxVel);
-        if( distance <= throwRange/3 ) {
+        this.vel = direction.mult(this.maxVel);  //calculates the velocity
+        if( distance <= throwRange/3 ) {  //If they get close to the enemy, they will begin to move away
           if( !movingAway ) {
           this.moveAway = 2.5*frameRate;
           movingAway = true;
@@ -111,21 +112,19 @@ class Person {
     }
 
     
-    println(this.moveAway);
-    this.pos.add(this.vel);
+    this.pos.add(this.vel);  //adds the velocity to their position
   }
   
   
   //Throw a ball at anyone who is in their throw radius
-
   void throwBall() {
     throwCooldown -= 1;
     for( Person p : people ) {
       
-      if( this.team != p.team && this.throwRange/2 >= dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y) ) {
-        if( this.throwCooldown <=0) {
-          balls.add(new balloon(this, p));
-          this.throwCooldown = 3 * frameRate;
+      if( this.team != p.team && this.throwRange/2 >= dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y) ) {  //checks if they are on the same team as to avoid team damage, and also makes sure they are within range before throwing
+        if( this.throwCooldown <=0) {  //checks if they are able to throw
+          balls.add(new balloon(this, p));  //adds the balloon into a list to be drawn each frame
+          this.throwCooldown = 3 * frameRate;  //After they throw, they wont be able to for 3 seconds
         }
 
       }
