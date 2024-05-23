@@ -46,14 +46,14 @@ void createTeams() {
 
 void createRed() {
   for( int i = 0; i < teamSizeRed; i++) {
-    people.add(new Person(st1, sp1, ag1, ed1, "RED") );
+    people.add(new Person(st2, sp2, ag2, ed2, "RED") );
   }
 }
 
 
 void createGreen() {
   for( int i = 0; i < teamSizeGreen; i++) {
-    people.add(new Person(st2, sp2, ag2, ed2, "GREEN") );
+    people.add(new Person(st1, sp1, ag1, ed1, "GREEN") );
   }
 }
 

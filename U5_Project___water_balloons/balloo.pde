@@ -29,14 +29,17 @@ class balloon{
     
     }
 
-  
   void drawMe(){
     fill(clr);
-    stroke(0);
     strokeWeight(1);
+    if(PVector.dist(this.pos,this.dest) >= rad){
     circle(this.pos.x,this.pos.y,rad);
-    
-  }
+    }
+    else{
+      this.rad -= 1  ;
+      circle(this.pos.x,this.pos.y,rad);
+      }
+    }
   
   void updatePos(){
     this.pos.add(vel);
