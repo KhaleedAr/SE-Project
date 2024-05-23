@@ -19,7 +19,7 @@ void setup(){
   createGUI();
   
   
-  Obstacles a = new Obstacles("circ_1",1);
+  //Obstacles a = new Obstacles("circ_1",1);
   //Obstacles b = new Obstacles("Rect",2);
   //Obstacles c = new Obstacles("tri_1",3);
   //Obstacles d = new Obstacles("circ_2", 4);
